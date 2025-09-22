@@ -1,0 +1,15 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = https://github.com/ayamir/nvimdots.git
+	fetch = +refs/heads/0.11:refs/remotes/origin/0.11
+[branch "0.11"]
+	remote = origin
+	merge = refs/heads/0.11
+	vscode-merge-base = origin/0.11
+	vscode-merge-base = origin/0.11

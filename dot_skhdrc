@@ -1,0 +1,48 @@
+# https://github.com/koekeishiya/yabai/wiki/Commands#focus-display
+
+# windows
+# rotate
+alt - r : yabai -m space --rotate 90
+# fullscreen
+alt - f : yabai -m window --toggle zoom-fullscreen
+# focus
+cmd + shift - h : yabai -m window --focus west
+cmd + shift - j : yabai -m window --focus south
+cmd + shift - k : yabai -m window --focus north
+cmd + shift - l : yabai -m window --focus east
+# swap
+alt + shift - h : yabai -m window --swap west
+alt + shift - j : yabai -m window --swap south
+alt + shift - k : yabai -m window --swap north
+alt + shift - l : yabai -m window --swap east
+# resize all windows
+cmd + shift - 0 : yabai -m space --balance
+# resize windowns
+# cmd + shift - s : yabai -m window --resize bottom:0:20
+# cmd + shift - a : yabai -m window --resize left:-20:0
+# cmd + shift - w : yabai -m window --resize bottom:0:-20
+# cmd + shift - d : yabai -m window --resize left:20:0
+
+
+# space
+# fast focus desktop
+cmd + shift - x : yabai -m space --focus recent
+cmd + shift - 1 : yabai -m space --focus 1
+cmd + shift - 2 : yabai -m space --focus 2
+cmd + shift - 3 : yabai -m space --focus 3
+cmd + shift - 4 : yabai -m space --focus 4
+cmd + shift - 5 : yabai -m space --focus 5
+
+
+shift + alt - n : yabai -m space --create && index="$(yabai -m query --spaces --display | jq '.| length')" && yabai -m window --space "${index}"  && yabai -m space --focus "${index}"
+shift + alt - 1 : yabai -m window --space  1; yabai -m space --focus 1
+shift + alt - 2 : yabai -m window --space  2; yabai -m space --destroy;yabai -m space --focus 2
+shift + alt - 3 : yabai -m window --space  3; yabai -m space --focus 3
+shift + alt - 4 : yabai -m window --space  4; yabai -m space --focus 4
+shift + alt - 5 : yabai -m window --space  5; yabai -m space --focus 5
+
+cmd + shift - w : yabai -m space --destroy
+cmd + shift - z  : yabai -m display --focus recent
+
+
+ctrl - return : ~/.config/skhd/scripts/dropdown_alacritty.sh >> /tmp/dropdown_alacritty.log 2>&1

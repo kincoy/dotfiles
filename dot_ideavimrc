@@ -1,0 +1,33 @@
+" --- 基础设置 ---
+let mapleader=" "
+set showmode
+set so=5
+set nu
+set ideajoin
+
+" --- 插件启用 ---
+set surround
+set commentary
+set easymotion
+set textobj-entire
+
+" Easymotion 快捷键
+" 双字符跳转
+map <leader>jj <Plug>(easymotion-s)
+
+" IDE Mapping
+map gi <Action>(GotoImplementation)
+sethandler <C-o> n:vim
+sethandler <C-i> n:vim
+
+
+
+" 基础 Mapping
+map U <C-R>
+map n nzz
+map N Nzz
+map Y y$
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-h> <c-w>h
+map <c-l> <c-w>l
