@@ -1,72 +1,83 @@
 #!/usr/bin/env sh
-# for this to work you must configure sudo such that
-# it will be able to run the command without password
 
+# ------------------------------
+# yabai 基础初始化
+# ------------------------------
 /opt/homebrew/bin/yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo /opt/homebrew/bin/yabai --load-sa
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 
-# .. more yabai startup stuff
-/opt/homebrew/bin/yabai -m config external_bar all:35:0
-/opt/homebrew/bin/yabai -m config mouse_follows_focus off
-/opt/homebrew/bin/yabai -m config focus_follows_mouse off
-/opt/homebrew/bin/yabai -m config window_zoom_persist off
-/opt/homebrew/bin/yabai -m config window_placement second_child
-/opt/homebrew/bin/yabai -m config window_opacity off
-/opt/homebrew/bin/yabai -m config split_ratio 0.50
-/opt/homebrew/bin/yabai -m config auto_balance off
-/opt/homebrew/bin/yabai -m config mouse_modifier fn
-/opt/homebrew/bin/yabai -m config mouse_action1 move
-/opt/homebrew/bin/yabai -m config mouse_action2 resize
-/opt/homebrew/bin/yabai -m config mouse_drop_action swap
-/opt/homebrew/bin/yabai -m config menubar_opacity 0.0
-# /opt/homebrew/bin/yabai -m config window_opacity_duration 0.2
-#/opt/homebrew/bin/yabai -m config active_window_opacity 1.0
-#/opt/homebrew/bin/yabai -m config normal_window_opacity 0.95
-# /opt/homebrew/bin/yabai -m config window_animation_duration 0.5
-# /opt/homebrew/bin/yabai -m config auto_padding on
-# /opt/homebrew/bin/yabai -m config window_topmost off
-# /opt/homebrew/bin/yabai -m config window_shadow float
+# 通用布局设置
+yabai -m config external_bar all:35:0
+yabai -m config layout bsp
+yabai -m config window_placement second_child
+yabai -m config mouse_follows_focus off
+yabai -m config focus_follows_mouse off
+yabai -m config auto_balance off
+yabai -m config split_ratio 0.50
+yabai -m config window_gap 8
+yabai -m config top_padding 5
+yabai -m config bottom_padding 8
+yabai -m config left_padding 8
+yabai -m config right_padding 8
+yabai -m config window_opacity off
+yabai -m config menubar_opacity 0.0
 
-/opt/homebrew/bin/yabai -m config top_padding 5
-/opt/homebrew/bin/yabai -m config bottom_padding 8
-/opt/homebrew/bin/yabai -m config left_padding 8
-/opt/homebrew/bin/yabai -m config right_padding 8
-/opt/homebrew/bin/yabai -m config window_gap 8
+# 鼠标操作
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config mouse_drop_action swap
 
-# 多桌面配置
-# No.1 #
+# ------------------------------
+# 显示器 1 布局（主显示器）
+# ------------------------------
 
-# No.2 #
-/opt/homebrew/bin/yabai -m rule --add app="QQ" space=2 manage=on
-/opt/homebrew/bin/yabai -m rule --add app="微信" space=2 manage=on
+# 桌面 1: 杂项（默认 manage=on）
+yabai -m rule --add space=1 display=1 manage=on
 
-# No.3 #
-/opt/homebrew/bin/yabai -m rule --add app="Alacritty" space=3 manage=on
+# 桌面 2: 聊天工具（QQ、微信、Slack、Discord）
+yabai -m rule --add app="^QQ$" space=2 display=1 manage=on
+yabai -m rule --add app="^微信$" space=2 display=1 manage=on
+yabai -m rule --add app="^Slack$" space=2 display=1 manage=on
+yabai -m rule --add app="^Discord$" space=2 display=1 manage=on
 
-# No.4 #
-/opt/homebrew/bin/yabai -m rule --add app="Chrome" space=4 --opacity=0.7 manage=on
-/opt/homebrew/bin/yabai -m rule --add app="Ark" space=4 --opacity=0.7 manage=on
-/opt/homebrew/bin/yabai -m rule --add app="Notion" space=4 --opacity=0.7 manage=on
+# 桌面 3: 终端
+yabai -m rule --add app="^Alacritty$" space=3 display=1 manage=on
 
-# No.5 #
-/opt/homebrew/bin/yabai -m rule --add app="goland" space=5 manage=on
+# 桌面 4: 浏览器
+yabai -m rule --add app="^Arc$" space=4 display=1 manage=on
 
-# No.6 #
-/opt/homebrew/bin/yabai -m rule --add app="网易云音乐" space=6 manage=on
-/opt/homebrew/bin/yabai -m rule --add app="飞书" space=6 manage=on
+# 桌面 5: IDE（JetBrains 系）
+for ide in "GoLand" "IntelliJ IDEA" "PyCharm" "WebStorm" "CLion" "Rider"; do
+	yabai -m rule --add app="^${ide}$" space=5 display=1 manage=on
+done
 
-# No.7 #
-/opt/homebrew/bin/yabai -m rule --add app="ChatGPT" space=7 manage=on
-/opt/homebrew/bin/yabai -m rule --add app="Postman" space=7 manage=on
-/opt/homebrew/bin/yabai -m rule --add app="Sublime Text" space=7 manage=on
+# ------------------------------
+# 显示器 2 布局（副显示器）
+# ------------------------------
 
-# Exclude problematic apps from being managed:
-/opt/homebrew/bin/yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|App Store|Steam|Alfred|Activity Monitor)$" manage=off
-/opt/homebrew/bin/yabai -m rule --add app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
-otherApp='^(IINA|Tencent Lemon|Clash Verge|音乐|MotionPro| discover |PlayCover|访达|Calendar|日历|地图|System Preferences|朋友圈|小程序|Downie 4|Shadowrocket| |照片|Epson iProjection|系统设置|1Password 7|Android Studio|印象笔记|MATLAB|CrossOver|飞连|哔哩哔哩)$'
-/opt/homebrew/bin/yabai -m rule --add app="${otherApp}" manage=off
+# 桌面 1: 音乐 + Lark
+yabai -m rule --add app="^QQ音乐$" space=1 display=2 manage=on
+yabai -m rule --add app="^网易云音乐$" space=1 display=2 manage=on
+yabai -m rule --add app="^Lark$" space=1 display=2 manage=on
 
-/opt/homebrew/bin/yabai -m config layout bsp
+# 桌面 2: 办公类（ChatGPT、Postman、Notion、Sublime Text）
+yabai -m rule --add app="^ChatGPT$" space=2 display=2 manage=on
+yabai -m rule --add app="^Postman$" space=2 display=2 manage=on
+yabai -m rule --add app="^Notion$" space=2 display=2 manage=on
+yabai -m rule --add app="^Sublime Text$" space=2 display=2 manage=on
+
+# ------------------------------
+# 不纳入管理的系统窗口
+# ------------------------------
+yabai -m rule --add app="^(System Preferences|System Settings|App Store|Activity Monitor|Archive Utility|Dictionary|LuLu|Calculator|VLC|zoom.us)$" manage=off
+yabai -m rule --add app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+
+# ------------------------------
+# 特殊例外
+# ------------------------------
 yabai -m rule --add app="Alacritty" title="^dropdown-alacritty$" manage=off
-echo "yabai configuration loaded.."
+yabai -m rule --add app="^Obsidian$" manage=off float=on sticky=on topmost=on
+
+echo "✅ yabai configuration loaded for dual-display setup"
