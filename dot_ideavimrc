@@ -10,10 +10,11 @@ set surround
 set commentary
 set easymotion
 set textobj-entire
+set functiontextobj
 
 " Easymotion 快捷键
 " 双字符跳转
-map <leader>jj <Plug>(easymotion-s)
+map <leader>j <Plug>(easymotion-s)
 
 " IDE Mapping
 map gi <Action>(GotoImplementation)
@@ -31,3 +32,4 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-h> <c-w>h
 map <c-l> <c-w>l
+map zz zt
