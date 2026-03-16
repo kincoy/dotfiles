@@ -33,7 +33,9 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     os_icon                 # os identifier
     dir                     # current directory
+    kubecontext
     vcs                     # git status
+    time  # time
     # prompt_char           # prompt symbol
   )
 
@@ -42,9 +44,9 @@
   # automatically hidden when the input line reaches it. Right prompt above the
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-    status                  # exit code of the last command
-    command_execution_time  # duration of the last command
-    background_jobs         # presence of background jobs
+    # status                  # exit code of the last command
+    # command_execution_time  # duration of the last command
+    # background_jobs         # presence of background jobs
     # direnv                  # direnv status (https://direnv.net/)
     # asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
     # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
@@ -81,24 +83,24 @@
     # gcloud                  # google cloud cli account and project (https://cloud.google.com/)
     # google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
     # toolbox                 # toolbox name (https://github.com/containers/toolbox)
-    context                 # user@hostname
+    # context                 # user@hostname
     # nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
     # ranger                  # ranger shell (https://github.com/ranger/ranger)
     # nnn                     # nnn shell (https://github.com/jarun/nnn)
     # xplr                    # xplr shell (https://github.com/sayanarijit/xplr)
-    vim_shell               # vim shell indicator (:sh)
+    # vim_shell               # vim shell indicator (:sh)
     # midnight_commander      # midnight commander shell (https://midnight-commander.org/)
     # nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
-    vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)
+    # vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)
     # vpn_ip                # virtual private network indicator
     # load                  # CPU load
     # disk_usage            # disk usage
     # ram                   # free RAM
     # swap                  # used swap
-    todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
+    # todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     # timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     # taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
-    time                    # current time
+    # time                    # current time
     # ip                    # ip address and bandwidth usage for a specified network interface
     # public_ip             # public IP address
     # proxy                 # system-wide http/https/ftp proxy
@@ -1298,7 +1300,7 @@
   #############[ kubecontext: current kubernetes context (https://kubernetes.io/) ]#############
   # Show kubecontext only when the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show kubecontext.
-  typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|fluxctl|stern'
+  # typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|fluxctl|stern'
 
   # Kubernetes context classes for the purpose of using different colors, icons and expansions with
   # different contexts.
@@ -1331,8 +1333,8 @@
       # '*prod*'  PROD    # These values are examples that are unlikely
       # '*test*'  TEST    # to match your needs. Customize them as needed.
       '*'       DEFAULT)
-  typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_FOREGROUND=7
-  typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_BACKGROUND=5
+  typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_FOREGROUND=234
+  typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_BACKGROUND=75
   # typeset -g POWERLEVEL9K_KUBECONTEXT_DEFAULT_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   # Use POWERLEVEL9K_KUBECONTEXT_CONTENT_EXPANSION to specify the content displayed by kubecontext
@@ -1648,8 +1650,8 @@
 
   ####################################[ time: current time ]####################################
   # Current time color.
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=0
-  typeset -g POWERLEVEL9K_TIME_BACKGROUND=7
+  typeset -g POWERLEVEL9K_TIME_FOREGROUND=235
+  typeset -g POWERLEVEL9K_TIME_BACKGROUND=156
   # Format for the current time: 09:51:02. See `man 3 strftime`.
   typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
   # If set to true, time will update when you hit enter. This way prompts for the past
