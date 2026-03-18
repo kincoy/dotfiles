@@ -14,6 +14,11 @@ local wechat = sbar.add("item", "widgets.wechat", {
 	update_freq = 5,
 })
 
+sbar.add("item", "widgets.wechat.padding.left", {
+	position = "right",
+	width = settings.group_paddings,
+})
+
 wechat:subscribe({ "routine", "power_source_change", "system_woke" }, function()
 	sbar.exec("lsappinfo -all list | grep wechat", function(wechat_notify)
 		local icon = "󰘑"

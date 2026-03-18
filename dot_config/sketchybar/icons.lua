@@ -41,6 +41,9 @@ local icons = {
 		qq = {
 			qq = "󰘅",
 		},
+		feishu = {
+			feishu = "󰚚",
+		},
 		media = {
 			back = "􀊊",
 			forward = "􀊌",

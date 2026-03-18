@@ -36,11 +36,12 @@ yabai -m config mouse_drop_action swap
 # 桌面 1: 杂项（默认 manage=on）
 yabai -m rule --add space=1 display=1 manage=on
 
-# 桌面 2: 聊天工具（QQ、微信、Slack、Discord）
+# 桌面 2: 聊天工具（QQ、微信、Slack、Discord、Telegram）
 yabai -m rule --add app="^QQ$" space=2 display=1 manage=on
-yabai -m rule --add app="^微信$" space=2 display=1 manage=on
+yabai -m rule --add app="^WeChat$" space=2 display=1 manage=on
 yabai -m rule --add app="^Slack$" space=2 display=1 manage=on
 yabai -m rule --add app="^Discord$" space=2 display=1 manage=on
+yabai -m rule --add app="^Telegram$" space=2 display=1 manage=on
 
 # 桌面 3: 终端
 yabai -m rule --add app="^Alacritty$" space=3 display=1 manage=on
@@ -57,27 +58,31 @@ done
 # 显示器 2 布局（副显示器）
 # ------------------------------
 
-# 桌面 1: 音乐 + Lark
+# 桌面 1: 音乐 + 飞书
 yabai -m rule --add app="^QQ音乐$" space=1 display=2 manage=on
 yabai -m rule --add app="^网易云音乐$" space=1 display=2 manage=on
-yabai -m rule --add app="^Lark$" space=1 display=2 manage=on
+yabai -m rule --add app="^Feishu$" space=1 display=2 manage=on
 
-# 桌面 2: 办公类（ChatGPT、Postman、Notion、Sublime Text）
+# 桌面 2: 办公类（ChatGPT、Postman、Notion、Sublime Text、CorpLink）
 yabai -m rule --add app="^ChatGPT$" space=2 display=2 manage=on
 yabai -m rule --add app="^Postman$" space=2 display=2 manage=on
 yabai -m rule --add app="^Notion$" space=2 display=2 manage=on
 yabai -m rule --add app="^Sublime Text$" space=2 display=2 manage=on
+yabai -m rule --add app="^CorpLink$" space=2 display=2 manage=on
 
 # ------------------------------
 # 不纳入管理的系统窗口
 # ------------------------------
 yabai -m rule --add app="^(System Preferences|System Settings|App Store|Activity Monitor|Archive Utility|Dictionary|LuLu|Calculator|VLC|zoom.us)$" manage=off
 yabai -m rule --add app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add app="^clash-verge$" manage=off
+yabai -m rule --add app="^网易有道翻译$" manage=off float=on sticky=on
 
 # ------------------------------
 # 特殊例外
 # ------------------------------
 yabai -m rule --add app="Alacritty" title="^dropdown-alacritty$" manage=off
 yabai -m rule --add app="^Obsidian$" manage=off float=on sticky=on topmost=on
+yabai -m rule --add app="^Godot$" manage=off float=on sticky=on topmost=on
 
 echo "✅ yabai configuration loaded for dual-display setup"
