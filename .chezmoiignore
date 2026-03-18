@@ -1,0 +1,2 @@
+# Local-only shell config (contains sensitive aliases, not tracked)
+.zshrc.local
