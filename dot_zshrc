@@ -13,8 +13,6 @@ export KUBE_EDITOR="$EDITOR"
 export XDG_CONFIG_HOME="$HOME/.config"
 export GOTOOLCHAIN=local
 
-export ANTHROPIC_BASE_URL="https://***REDACTED***"
-export ANTHROPIC_AUTH_TOKEN="***REDACTED***"
 
 alias k="kubectl"
 alias grep="ggrep"
