@@ -5,12 +5,21 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="/Users/kinco/scripts/:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 export EDITOR="nvim"
 export KUBE_EDITOR="$EDITOR"
 export XDG_CONFIG_HOME="$HOME/.config"
+export GOTOOLCHAIN=local
+
+export ANTHROPIC_BASE_URL="https://***REDACTED***"
+export ANTHROPIC_AUTH_TOKEN="***REDACTED***"
 
 alias k="kubectl"
+alias grep="ggrep"
+alias ji="ssh jumpserver-inner"
+alias jo="ssh jumpserver-outer"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -130,3 +139,7 @@ autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 eval "$(/Users/kinco/.local/bin/mise activate zsh)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+alias grep='ggrep'
