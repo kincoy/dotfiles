@@ -1,0 +1,9 @@
+# Local-only files with sensitive data
+**/.zshrc.local
+.zshrc.local
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store

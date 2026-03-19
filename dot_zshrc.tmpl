@@ -16,8 +16,6 @@ export GOTOOLCHAIN=local
 
 alias k="kubectl"
 alias grep="ggrep"
-# Load local-only aliases (not tracked by chezmoi)
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -141,3 +139,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 alias grep='ggrep'
+
+# Load local-only aliases (not tracked by chezmoi)
+# Must be at the end to ensure all environment is initialized
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
